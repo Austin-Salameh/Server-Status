@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- force IE browsers in compatibility mode to use their most aggressive rendering engine -->
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title> MobileStar Server Status</title>
+    <meta name="description" content="Welcome to MobileStars home for real-time and historical data on system performance.">
+
+    <!-- Mobile viewport optimization h5bp.com/ad -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Time this page was rendered - http://purl.org/dc/terms/issued -->
+    <meta name="issued" content="1616462908">
+
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- fonts -->
+<style>
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-f0b2f7c12b6b87c65c02d3c1738047ea67a7607fd767056d8a2964cc6a2393f7.eot?host=mobilestar.statuspage.io');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-f0b2f7c12b6b87c65c02d3c1738047ea67a7607fd767056d8a2964cc6a2393f7.eot?host=mobilestar.statuspage.io#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-e642ffe82005c6208632538a557e7f5dccb835c0303b06f17f55ccf567907241.woff?host=mobilestar.statuspage.io') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaLight-0f094da9b301d03292f97db5544142a16f9f2ddf50af91d44753d9310c194c5f.ttf?host=mobilestar.statuspage.io') format('truetype');
+    font-weight:300;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-366d17769d864aa72f27defaddf591e460a1de4984bb24dacea57a9fc1d14878.eot?host=mobilestar.statuspage.io');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-366d17769d864aa72f27defaddf591e460a1de4984bb24dacea57a9fc1d14878.eot?host=mobilestar.statuspage.io#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-2ee4c449a9ed716f1d88207bd1094e21b69e2818b5cd36b28ad809dc1924ec54.woff?host=mobilestar.statuspage.io') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegular-a40a469edbd27b65b845b8000d47445a17def8ba677f4eb836ad1808f7495173.ttf?host=mobilestar.statuspage.io') format('truetype');
+    font-weight:400;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0bf83a850b45e4ccda15bd04691e3c47ae84fec3588363b53618bd275a98cbb7.eot?host=mobilestar.statuspage.io');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0bf83a850b45e4ccda15bd04691e3c47ae84fec3588363b53618bd275a98cbb7.eot?host=mobilestar.statuspage.io#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-0c394ec7a111aa7928ea470ec0a67c44ebdaa0f93d1c3341abb69656cc26cbdd.woff?host=mobilestar.statuspage.io') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaRegularIt-9e43859f8015a4d47d9eaf7bafe8d1e26e3298795ce1f4cdb0be0479b8a4605e.ttf?host=mobilestar.statuspage.io') format('truetype');
+    font-weight:400;
+    font-style:italic;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-09566917307251d22021a3f91fc646f3e45f8d095209bcd2cded8a1979f06e54.eot?host=mobilestar.statuspage.io');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-09566917307251d22021a3f91fc646f3e45f8d095209bcd2cded8a1979f06e54.eot?host=mobilestar.statuspage.io#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-86724fb2152613d735ba47c3f47a9ad2424b898bea4bece213dacee40344f966.woff?host=mobilestar.statuspage.io') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaSemibold-cf3e4eb7fbdf6fb83e526cc2a0141e55b01097e6e1abfd4cbdc3eda75d183f74.ttf?host=mobilestar.statuspage.io') format('truetype');
+    font-weight:500;
+    font-style:normal;
+  }
+   
+  @font-face {
+    font-family: 'proxima-nova';
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-622ea489d20e12e691663f83217105e957e2d3d09703707d40155a29c06cc9d9.eot?host=mobilestar.statuspage.io');
+    src: url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-622ea489d20e12e691663f83217105e957e2d3d09703707d40155a29c06cc9d9.eot?host=mobilestar.statuspage.io#iefix') format('embedded-opentype'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-c8dc577ff7f76d2fc199843e38c04bb2e9fd15889421358d966a9f846c2ed1cd.woff?host=mobilestar.statuspage.io') format('woff'),
+         url('https://dka575ofm4ao0.cloudfront.net/assets/ProximaNovaBold-27177fe9242acbe089276ee587feef781446667ffe9b6fdc5b7fe21ad73e12f3.ttf?host=mobilestar.statuspage.io') format('truetype');
+    font-weight:700;
+    font-style:normal;
+  }
+</style>
+
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-57x57-precomposed-5c491f48c00b91d5cf8b0839521a13b98ba3cd2167c5e0e53040ccf401227556.png" sizes="57x57">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-72x72-precomposed-94327076268b47cc7da838952f5e89a5ed9dcdde2734db231491e328d23e9962.png" sizes="72x72">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-114x114-precomposed-1e9664e05d1a3dc5cd67ee3b3c17215526a04a3b0a2e018bd26c5fa73482392f.png" sizes="114x114">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-120x120-precomposed-5d71ac87ecfc852fef52505af1eade3674709a530e7ed2ddb3ff44ab62db52f7.png" sizes="120x120">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-144x144-precomposed-f140e6b87ce676b2388742ebce8292476ba938f73a49c4c15e86565a224bb93d.png" sizes="144x144">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-152x152-precomposed-38fe2c387837f45dfab255be5670c7b3aad29cf6dbc5b8e4cdce30f61259b9ce.png" sizes="152x152">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-167x167-precomposed-b776218c8fb96a430158776d0749c2f81143c94f40c4427e53e32e4c786c87c0.png" sizes="167x167">
+<link rel="apple-touch-icon" href="https://dka575ofm4ao0.cloudfront.net/assets/base/apple-touch-icon-180x180-precomposed-8819023509ff72c1f8945709243c9bab8b40c9bac0eb7891ad75b36600c7c7f9.png" sizes="180x180">
+
+    <link rel="shortcut icon" href="https://dka575ofm4ao0.cloudfront.net/assets/logos/favicon-2b86ed00cfa6258307d4a3d0c482fd733c7973f82de213143b24fc062c540367.png">
+
+    <link rel="alternate" type="application/atom+xml" href="https://mobilestar.statuspage.io/history.atom" title="MobileStar Status History - Atom Feed">
+    <link rel="alternate" type="application/rss+xml" href="https://mobilestar.statuspage.io/history.rss" title="MobileStar Status History - RSS Feed">
+
+
+    <meta name="_globalsign-domain-verification" content="y_VzfckMy4iePo5oDJNivyYIjh8LffYa4jzUndm_bZ">
+
+
+    <link rel="alternate" type="application/atom+xml" title="ATOM" href="https://bitcoin24.statuspage.io/history.atom">
+
+    <!-- styles -->
+    <link rel="stylesheet" media="screen" href="https://dka575ofm4ao0.cloudfront.net/packs/0.fed2099a7692e566af70.css">
+    <link rel="stylesheet" media="all" href="https://dka575ofm4ao0.cloudfront.net/assets/status/status_manifest-561fc1a1401f751f5bbb43764df0227bf8a957ac6979a7cee4bb3928dcd82eee.css">
+
+    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/6g5J7UfDQ9mLrweZHj04ekSP/recaptcha__en.js" crossorigin="anonymous" integrity="sha384-RuApWdDoPwLFNdUYlX+rsBAHAtQruqW8JHyDdyejk08kG6qc+NXpVxNUKhPYwyoI"></script><script src="https://dka575ofm4ao0.cloudfront.net/assets/jquery-3.5.1.min-729e416557a365062a8a20f0562f18aa171da57298005d392312670c706c68de.js"></script>
+
+    <script>
+      window.pageColorData = {"blue":"#3498DB","border":"#E0E0E0","body_background":"#ffffff","font":"#333333","graph":"#3498db","green":"#2fcc66","light_font":"#AAAAAA","link":"#3498db","orange":"#e67e22","red":"#e74c3c","yellow":"#f1c40f","no_data":"#b3bac5"};
+    </script>
+    <style>
+
+  /* BODY BACKGROUND */ 
+  body,
+  .layout-content.status.status-api .section .example-container .example-opener .color-secondary,
+  .grouped-items-selector,
+  .layout-content.status.status-full-history .history-nav a.current,
+  div[id^="subscribe-modal"] .modal-footer,
+  div[id^="subscribe-modal"],
+  #uptime-tooltip .tooltip-box {
+    background-color:#3b3333;
+  }
+
+  #uptime-tooltip .pointer-container .pointer-smaller {
+    border-bottom-color:#ffffff;
+  }
+
+
+  /* PRIMARY FONT COLOR */ 
+  body.status,
+  .color-primary,
+  .color-primary:hover,
+  .layout-content.status-index .status-day .update-title.impact-none a,
+  .layout-content.status-index .status-day .update-title.impact-none a:hover,
+  .layout-content.status-index .timeframes-container .timeframe.active,
+  .layout-content.status-full-history .month .incident-container .impact-none,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-none a,
+  .incident-history .impact-none,
+  .layout-content.status .grouped-items-selector.inline .grouped-item.active,
+  .layout-content.status.status-full-history .history-nav a.current,
+  .layout-content.status.status-full-history .history-nav a:not(.current):hover,
+  div[id^="subscribe-modal"] .modal-header .close,
+  .grouped-item-label,
+  #uptime-tooltip .tooltip-box .tooltip-content .related-events .related-event a.related-event-link {
+    color:#ddd6d6;
+  }
+
+  .layout-content.status.status-index .components-statuses .component-container .name {
+    color:#a79b9b;
+    color:#a79b9b(51,51,51,.8);
+  }
+
+
+  /* SECONDARY FONT COLOR */
+  small,
+  .layout-content.status .table-row .date,
+  .color-secondary,
+  .layout-content.status .grouped-items-selector.inline .grouped-item,
+  .layout-content.status.status-full-history .history-footer .pagination a.disabled,
+  .layout-content.status.status-full-history .history-nav a,
+  #uptime-tooltip .tooltip-box .tooltip-content .related-events #related-event-header {
+    color:#AAAAAA;
+  }
+
+
+  /* BORDER COLOR */  
+  body.status .layout-content.status .border-color,
+  hr,
+  .tooltip-base,
+  .markdown-display table,
+  div[id^="subscribe-modal"],
+  #uptime-tooltip .tooltip-box {
+    border-color:#E0E0E0;
+  }
+
+  div[id^="subscribe-modal"] .modal-footer,
+  .markdown-display table td {
+    border-top-color:#E0E0E0;
+  }
+
+  div[id^="subscribe-modal"] .modal-header .close:hover {
+    color:#E0E0E0;
+  }
+
+  .markdown-display table td + td, .markdown-display table th + th {
+    border-left-color:#E0E0E0;
+  }
+
+  div[id^="subscribe-modal"] .modal-header,
+  #uptime-tooltip .pointer-container .pointer-larger {
+    border-bottom-color:#E0E0E0;
+  }
+
+  #uptime-tooltip .tooltip-box .outage-field {
+    /*
+      Generate the background-color for the outage-field from the css_body_background_color and css_border_color.
+
+      For darker css_body_background_color, luminosity values are lower so alpha trends toward becoming transparent (thus outage-field background becomes same as css_body_background_color).
+    */
+    background-color: rgba(224,224,224,0.31);
+
+    /*
+      outage-field border-color alpha is inverse to the luminosity of css_body_background_color.
+      That is to say, with a default white background this border is transparent, but on a black background, it's opaque css_border_color.
+    */
+    border-color: rgba(212, 202, 202, 0);
+  }
+
+
+  /* CSS REDS */
+  .layout-content.status.status-index .status-day .update-title.impact-critical a,
+  .layout-content.status.status-index .status-day .update-title.impact-critical a:hover,
+  .layout-content.status.status-index .page-status.status-critical,
+  .layout-content.status.status-index .unresolved-incident.impact-critical .incident-title,
+  .flat-button.background-red {
+    background-color:#e74c3c;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-red:after,
+  .layout-content.status-full-history .month .incident-container .impact-critical,
+  .layout-content.status-incident .incident-name.impact-critical,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-critical a,
+  .status-red .icon-indicator,
+  .incident-history .impact-critical,
+  .components-container .component-inner-container.status-red .component-status,
+  .components-container .component-inner-container.status-red .icon-indicator {
+    color:#e74c3c;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-critical .updates {
+    border-color:#e74c3c;
+  }
+
+
+  /* CSS ORANGES */ 
+  .layout-content.status.status-index .status-day .update-title.impact-major a,
+  .layout-content.status.status-index .status-day .update-title.impact-major a:hover,
+  .layout-content.status.status-index .page-status.status-major,
+  .layout-content.status.status-index .unresolved-incident.impact-major .incident-title {
+    background-color:#e67e22;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-orange:after,
+  .layout-content.status-full-history .month .incident-container .impact-major,
+  .layout-content.status-incident .incident-name.impact-major,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-major a,
+  .status-orange .icon-indicator,
+  .incident-history .impact-major,
+  .components-container .component-inner-container.status-orange .component-status,
+  .components-container .component-inner-container.status-orange .icon-indicator {
+    color:#e67e22;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-major .updates {
+    border-color:#e67e22;
+  }
+
+
+  /* CSS YELLOWS */ 
+  .layout-content.status.status-index .status-day .update-title.impact-minor a,
+  .layout-content.status.status-index .status-day .update-title.impact-minor a:hover,
+  .layout-content.status.status-index .page-status.status-minor,
+  .layout-content.status.status-index .unresolved-incident.impact-minor .incident-title,
+  .layout-content.status.status-index .scheduled-incidents-container .tab {
+    background-color:#f1c40f;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-yellow:after,
+  .layout-content.status-full-history .month .incident-container .impact-minor,
+  .layout-content.status-incident .incident-name.impact-minor,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-minor a,
+  .status-yellow .icon-indicator,
+  .incident-history .impact-minor,
+  .components-container .component-inner-container.status-yellow .component-status,
+  .components-container .component-inner-container.status-yellow .icon-indicator,
+  .layout-content.status.manage-subscriptions .confirmation-infobox .fa {
+    color:#f1c40f;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-minor .updates,
+  .layout-content.status.status-index .scheduled-incidents-container {
+    border-color:#f1c40f;
+  }
+
+
+
+
+  /* CSS BLUES */ 
+  .layout-content.status.status-index .status-day .update-title.impact-maintenance a,
+  .layout-content.status.status-index .status-day .update-title.impact-maintenance a:hover,
+  .layout-content.status.status-index .page-status.status-maintenance,
+  .layout-content.status.status-index .unresolved-incident.impact-maintenance .incident-title,
+  .layout-content.status.status-index .scheduled-incidents-container .tab {
+    background-color:#3498DB;
+  }
+
+  .layout-content.status-index .components-statuses .component-container.status-blue:after,
+  .layout-content.status-full-history .month .incident-container .impact-maintenance,
+  .layout-content.status-incident .incident-name.impact-maintenance,
+  .layout-content.status.status-index .incidents-list .incident-title.impact-maintenance a,
+  .status-blue .icon-indicator,
+  .incident-history .impact-maintenance,
+  .components-container .component-inner-container.status-blue .component-status,
+  .components-container .component-inner-container.status-blue .icon-indicator {
+    color:#3498DB;
+  }
+
+  .layout-content.status.status-index .unresolved-incident.impact-maintenance .updates,
+  .layout-content.status.status-index .scheduled-incidents-container {
+    border-color:#3498DB;
+  }
+
+
+
+
+  /* CSS GREENS */ 
+  .layout-content.status.status-index .page-status.status-none {
+    background-color: #2fcc66;
+}
+
+  .layout-content.status-index .components-statuses .component-container.status-green:after,
+  .status-green .icon-indicator,
+  .components-container .component-inner-container.status-green .component-status,
+  .components-container .component-inner-container.status-green .icon-indicator {
+    color:#2fcc66;
+  }
+
+
+  /* CSS LINK COLOR */  
+  a,
+  a:hover,
+  .layout-content.status-index .page-footer span a:hover,
+  .layout-content.status-index .timeframes-container .timeframe:not(.active):hover,
+  .layout-content.status-incident .subheader a:hover {
+    color:#3498db;
+  }
+
+  .flat-button,
+  .masthead .updates-dropdown-container .show-updates-dropdown,
+  .layout-content.status-full-history .show-filter.open  {
+    background-color:#3498db;
+  }
+
+
+  /* CUSTOM COLOR OVERRIDES FOR UPTIME SHOWCASE */
+  .components-section .components-uptime-link {
+    color: #aaaaaa;
+  }
+
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .legend-item {
+    color: #aaaaaa;
+    opacity: 0.8;
+  }
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .legend-item.light {
+    color: #aaaaaa;
+    opacity: 0.5;
+  }
+  .layout-content.status .shared-partial.uptime-90-days-wrapper .legend .spacer {
+    background: #aaaaaa;
+    opacity: 0.3;
+  }
+</style>
+
+
+
+      <!-- polyfills -->
+      <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    
+  </head>
+
+  <body class="status index status-none" data-breakpoint-reached="true">
+  
+  
+    <div class="layout-content status status-index starter" style="padding-bottom: 74px;">
+        <div class="masthead-container basic">
+  
+      <div class="masthead no-logo">
+          <h3>
+            MobileStar Server Status
+          </h3>
+  
+          
+  
+    <div class="updates-dropdown-container" data-js-hook="updates-dropdown-container" style="top: 22px;">
+      <a href="#" data-js-hook="show-updates-dropdown" id="show-updates-dropdown" class="show-updates-dropdown" aria-label="Subscribe to updates" aria-expanded="false">
+  
+      </a>
+  
+      <div class="updates-dropdown" data-js-hook="updates-dropdown" style="display:none">
+        <div class="updates-dropdown-nav nav-items-4">
+            <a href="#updates-dropdown-email" id="updates-dropdown-email-btn" aria-label="Subscribe via email" class="active">
+              <span class="icon-container email">
+            </span></a>
+            <a href="#updates-dropdown-slack" id="updates-dropdown-slack-btn" aria-label="Subscribe via slack">
+              <span class="icon-container slack">
+            </span></a>
+            <a href="#updates-dropdown-atom" id="updates-dropdown-atom-btn" aria-label="Subscribe via RSS">
+              <span class="icon-container rss">
+            </span></a>
+          <a href="#" data-js-hook="updates-dropdown-close" id="updates-dropdown-close-btn" aria-label="Close subscribe form">
+            x
+          </a>
+        </div>
+        <div class="updates-dropdown-sections-container">
+            <div class="updates-dropdown-section email" id="updates-dropdown-email" style="">
+              <div class="directions">
+                Get email notifications whenever MobileStar <strong>creates</strong>, <strong>updates</strong> or <strong>resolves</strong> an incident.
+              </div>
+              <form id="subscribe-form-email" action="/subscriptions/new-email" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+                  <!-- make sure not to put cookie values in here since this gets cached -->
+                  <input name="email" id="email" type="text" placeholder="Email Address" class="full-width" data-js-hook="email-notification-field" aria-label="Your email address">
+                    <input type="hidden" name="captcha_error" id="captcha_error" value="false">
+                    <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; position: fixed; visibility: hidden; display: block; transition: right 0.3s ease 0s; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdTS8AUAAAAAOIbCKoCAP4LQku1olYGrywPTaZz&amp;co=aHR0cHM6Ly9iaXRjb2luMjQuc3RhdHVzcGFnZS5pbzo0NDM.&amp;hl=en&amp;v=6g5J7UfDQ9mLrweZHj04ekSP&amp;size=invisible&amp;cb=tg6yeo1f6u39" width="256" height="60" role="presentation" name="a-iv00y2cj3rcb" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div><input type="submit" value="Subscribe via Email" class="flat-button full-width g-recaptcha" id="subscribe-btn-email" data-disabled-text="Subscribing..." data-sitekey="6LdTS8AUAAAAAOIbCKoCAP4LQku1olYGrywPTaZz" data-callback="submitNewEmailSubscriber" data-error-callback="emailSubscriberCaptchaError">
+                    <div class="terms_and_privacy_information bottom small"> This site is protected by reCAPTCHA and the Google <a target="_blank" rel="noopener" href="https://policies.google.com/privacy">Privacy Policy</a> and <a target="_blank" rel="noopener" href="https://policies.google.com/terms">Terms of Service</a> apply.</div>
+  </form>          </div>
+  
+  
+            <div class="updates-dropdown-section slack" id="updates-dropdown-slack" style="display:none">
+              <div class="directions">
+                Get incident updates and maintenance status messages in Slack.
+              </div>
+              <a value="Subscribe via Slack" class="flat-button full-width" id="subscribe-btn-slack" data-disabled-text="Subscribing..." data-revert-on-success="true" style="margin-top:.75rem" href="https://subscriptions.statuspage.io/slack_authentication/kickoff?page_code=dxtmzp1pjj6h">Subscribe via Slack</a>
+              <div class="terms_and_privacy_information bottom small">By subscribing you agree to the MobileStar<a target="_blank" rel="noopener" href="https://mobilestar.us/">Cloud Terms of Service</a> and acknowledge MobileStar's <a target="_blank" rel="noopener" href="https://mobilestar.us/">Privacy Policy</a>.</div>
+            </div>
+  
+  
+  
+  
+            <div class="updates-dropdown-section atom" id="updates-dropdown-atom" style="display: none;">
+              Get the <a href="" target="_blank">Atom Feed</a> or <a href="" target="_blank">RSS Feed</a>.
+            </div>
+        </div>
+      </div>
+    </div>
+  
+        <div class="clearfix"></div>
+      </div>
+  
+  </div>
+   <!-- this is outside of the .container so that the cover photo can go full width on mobile -->
+  
+      <div class="container">
+          <div class="page-status status-none">
+            <span class="status font-large">
+              All Systems Operational
+            </span>
+            <span class="last-updated-stamp  font-small"></span>
+          </div>
+  
+
+          <div class="components-section font-regular">
+        <i class="component-status hidden major_outage"></i>
+        <div class="components-uptime-link history-footer-link">
+          Uptime over the past <var data-var="num" data-pluralize="90">60</var> days. <a href="/uptime">View historical uptime.</a>
+        </div>
+      <div class="components-container one-column">
+            <div class="component-container border-color">
+              
+  <div data-component-id="9fgyrhwscd70" class="component-inner-container status-green showcased" data-component-status="operational" data-js-hook="">
+  
+     <span class="name">
+        API (example)
+     </span>
+  
+  
+    <span class="component-status " title="">
+      Operational
+    </span>
+  
+    <span class="tool icon-indicator fa fa-check tooltipstered"></span>
+  
+      <div class="shared-partial uptime-90-days-wrapper">
+    <svg class="availability-time-line-graphic" id="uptime-component-9fgyrhwscd70" preserveAspectRatio="none" height="34" viewBox="150 0 298 34">
+  
+      <rect height="34" width="3" x="0" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-0" data-html="true"></rect>
+      <rect height="34" width="3" x="5" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-1" data-html="true"></rect>
+      <rect height="34" width="3" x="10" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-2" data-html="true"></rect>
+      <rect height="34" width="3" x="15" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-3" data-html="true"></rect>
+      <rect height="34" width="3" x="20" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-4" data-html="true"></rect>
+      <rect height="34" width="3" x="25" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-5" data-html="true"></rect>
+      <rect height="34" width="3" x="30" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-6" data-html="true"></rect>
+      <rect height="34" width="3" x="35" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-7" data-html="true"></rect>
+      <rect height="34" width="3" x="40" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-8" data-html="true"></rect>
+      <rect height="34" width="3" x="45" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-9" data-html="true"></rect>
+      <rect height="34" width="3" x="50" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-10" data-html="true"></rect>
+      <rect height="34" width="3" x="55" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-11" data-html="true"></rect>
+      <rect height="34" width="3" x="60" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-12" data-html="true"></rect>
+      <rect height="34" width="3" x="65" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-13" data-html="true"></rect>
+      <rect height="34" width="3" x="70" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-14" data-html="true"></rect>
+      <rect height="34" width="3" x="75" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-15" data-html="true"></rect>
+      <rect height="34" width="3" x="80" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-16" data-html="true"></rect>
+      <rect height="34" width="3" x="85" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-17" data-html="true"></rect>
+      <rect height="34" width="3" x="90" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-18" data-html="true"></rect>
+      <rect height="34" width="3" x="95" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-19" data-html="true"></rect>
+      <rect height="34" width="3" x="100" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-20" data-html="true"></rect>
+      <rect height="34" width="3" x="105" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-21" data-html="true"></rect>
+      <rect height="34" width="3" x="110" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-22" data-html="true"></rect>
+      <rect height="34" width="3" x="115" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-23" data-html="true"></rect>
+      <rect height="34" width="3" x="120" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-24" data-html="true"></rect>
+      <rect height="34" width="3" x="125" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-25" data-html="true"></rect>
+      <rect height="34" width="3" x="130" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-26" data-html="true"></rect>
+      <rect height="34" width="3" x="135" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-27" data-html="true"></rect>
+      <rect height="34" width="3" x="140" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-28" data-html="true"></rect>
+      <rect height="34" width="3" x="145" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-29" data-html="true"></rect>
+      <rect height="34" width="3" x="150" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-30" data-html="true"></rect>
+      <rect height="34" width="3" x="155" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-31" data-html="true"></rect>
+      <rect height="34" width="3" x="160" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-32" data-html="true"></rect>
+      <rect height="34" width="3" x="165" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-33" data-html="true"></rect>
+      <rect height="34" width="3" x="170" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-34" data-html="true"></rect>
+      <rect height="34" width="3" x="175" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-35" data-html="true"></rect>
+      <rect height="34" width="3" x="180" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-36" data-html="true"></rect>
+      <rect height="34" width="3" x="185" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-37" data-html="true"></rect>
+      <rect height="34" width="3" x="190" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-38" data-html="true"></rect>
+      <rect height="34" width="3" x="195" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-39" data-html="true"></rect>
+      <rect height="34" width="3" x="200" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-40" data-html="true"></rect>
+      <rect height="34" width="3" x="205" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-41" data-html="true"></rect>
+      <rect height="34" width="3" x="210" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-42" data-html="true"></rect>
+      <rect height="34" width="3" x="215" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-43" data-html="true"></rect>
+      <rect height="34" width="3" x="220" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-44" data-html="true"></rect>
+      <rect height="34" width="3" x="225" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-45" data-html="true"></rect>
+      <rect height="34" width="3" x="230" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-46" data-html="true"></rect>
+      <rect height="34" width="3" x="235" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-47" data-html="true"></rect>
+      <rect height="34" width="3" x="240" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-48" data-html="true"></rect>
+      <rect height="34" width="3" x="245" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-49" data-html="true"></rect>
+      <rect height="34" width="3" x="250" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-50" data-html="true"></rect>
+      <rect height="34" width="3" x="255" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-51" data-html="true"></rect>
+      <rect height="34" width="3" x="260" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-52" data-html="true"></rect>
+      <rect height="34" width="3" x="265" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-53" data-html="true"></rect>
+      <rect height="34" width="3" x="270" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-54" data-html="true"></rect>
+      <rect height="34" width="3" x="275" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-55" data-html="true"></rect>
+      <rect height="34" width="3" x="280" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-56" data-html="true"></rect>
+      <rect height="34" width="3" x="285" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-57" data-html="true"></rect>
+      <rect height="34" width="3" x="290" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-58" data-html="true"></rect>
+      <rect height="34" width="3" x="295" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-59" data-html="true"></rect>
+      <rect height="34" width="3" x="300" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-60" data-html="true"></rect>
+      <rect height="34" width="3" x="305" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-61" data-html="true"></rect>
+      <rect height="34" width="3" x="310" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-62" data-html="true"></rect>
+      <rect height="34" width="3" x="315" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-63" data-html="true"></rect>
+      <rect height="34" width="3" x="320" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-64" data-html="true"></rect>
+      <rect height="34" width="3" x="325" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-65" data-html="true"></rect>
+      <rect height="34" width="3" x="330" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-66" data-html="true"></rect>
+      <rect height="34" width="3" x="335" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-67" data-html="true"></rect>
+      <rect height="34" width="3" x="340" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-68" data-html="true"></rect>
+      <rect height="34" width="3" x="345" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-69" data-html="true"></rect>
+      <rect height="34" width="3" x="350" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-70" data-html="true"></rect>
+      <rect height="34" width="3" x="355" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-71" data-html="true"></rect>
+      <rect height="34" width="3" x="360" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-72" data-html="true"></rect>
+      <rect height="34" width="3" x="365" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-73" data-html="true"></rect>
+      <rect height="34" width="3" x="370" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-74" data-html="true"></rect>
+      <rect height="34" width="3" x="375" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-75" data-html="true"></rect>
+      <rect height="34" width="3" x="380" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-76" data-html="true"></rect>
+      <rect height="34" width="3" x="385" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-77" data-html="true"></rect>
+      <rect height="34" width="3" x="390" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-78" data-html="true"></rect>
+      <rect height="34" width="3" x="395" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-79" data-html="true"></rect>
+      <rect height="34" width="3" x="400" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-80" data-html="true"></rect>
+      <rect height="34" width="3" x="405" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-81" data-html="true"></rect>
+      <rect height="34" width="3" x="410" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-82" data-html="true"></rect>
+      <rect height="34" width="3" x="415" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-83" data-html="true"></rect>
+      <rect height="34" width="3" x="420" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-84" data-html="true"></rect>
+      <rect height="34" width="3" x="425" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-85" data-html="true"></rect>
+      <rect height="34" width="3" x="430" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-86" data-html="true"></rect>
+      <rect height="34" width="3" x="435" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-87" data-html="true"></rect>
+      <rect height="34" width="3" x="440" y="0" fill="#b3bac5" class="uptime-day component-9fgyrhwscd70 day-88" data-html="true"></rect>
+      <rect height="34" width="3" x="445" y="0" fill="#2fcc66" class="uptime-day component-9fgyrhwscd70 day-89" data-html="true"></rect>
+  </svg>
+    <div class="legend ">
+    <div class="legend-item light legend-item-date-range"><span class="availability-time-line-legend-day-count">60</span> days ago</div>
+    <div class="spacer"></div>
+    <div class="legend-item legend-item-uptime-value legend-item-9fgyrhwscd70"><span id="uptime-percent-9fgyrhwscd70">100</span> % uptime</div>
+    <div class="spacer"></div>
+    <div class="legend-item light legend-item-date-range">Today</div>
+  </div>
+  
+  </div>
+  
+  </div>
+  
+            </div>
+            <div class="component-container border-color">
+              
+  <div data-component-id="h1hhzp134mdm" class="component-inner-container status-green showcased" data-component-status="operational" data-js-hook="">
+  
+     <span class="name">
+        Feedlock System
+     </span>
+  
+  
+    <span class="component-status " title="">
+      Operational
+    </span>
+  
+    <span class="tool icon-indicator fa fa-check tooltipstered"></span>
+  
+      <div class="shared-partial uptime-90-days-wrapper">
+    <svg class="availability-time-line-graphic" id="uptime-component-h1hhzp134mdm" preserveAspectRatio="none" height="34" viewBox="150 0 298 34">
+  
+      <rect height="34" width="3" x="0" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-0" data-html="true"></rect>
+      <rect height="34" width="3" x="5" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-1" data-html="true"></rect>
+      <rect height="34" width="3" x="10" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-2" data-html="true"></rect>
+      <rect height="34" width="3" x="15" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-3" data-html="true"></rect>
+      <rect height="34" width="3" x="20" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-4" data-html="true"></rect>
+      <rect height="34" width="3" x="25" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-5" data-html="true"></rect>
+      <rect height="34" width="3" x="30" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-6" data-html="true"></rect>
+      <rect height="34" width="3" x="35" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-7" data-html="true"></rect>
+      <rect height="34" width="3" x="40" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-8" data-html="true"></rect>
+      <rect height="34" width="3" x="45" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-9" data-html="true"></rect>
+      <rect height="34" width="3" x="50" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-10" data-html="true"></rect>
+      <rect height="34" width="3" x="55" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-11" data-html="true"></rect>
+      <rect height="34" width="3" x="60" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-12" data-html="true"></rect>
+      <rect height="34" width="3" x="65" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-13" data-html="true"></rect>
+      <rect height="34" width="3" x="70" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-14" data-html="true"></rect>
+      <rect height="34" width="3" x="75" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-15" data-html="true"></rect>
+      <rect height="34" width="3" x="80" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-16" data-html="true"></rect>
+      <rect height="34" width="3" x="85" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-17" data-html="true"></rect>
+      <rect height="34" width="3" x="90" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-18" data-html="true"></rect>
+      <rect height="34" width="3" x="95" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-19" data-html="true"></rect>
+      <rect height="34" width="3" x="100" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-20" data-html="true"></rect>
+      <rect height="34" width="3" x="105" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-21" data-html="true"></rect>
+      <rect height="34" width="3" x="110" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-22" data-html="true"></rect>
+      <rect height="34" width="3" x="115" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-23" data-html="true"></rect>
+      <rect height="34" width="3" x="120" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-24" data-html="true"></rect>
+      <rect height="34" width="3" x="125" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-25" data-html="true"></rect>
+      <rect height="34" width="3" x="130" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-26" data-html="true"></rect>
+      <rect height="34" width="3" x="135" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-27" data-html="true"></rect>
+      <rect height="34" width="3" x="140" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-28" data-html="true"></rect>
+      <rect height="34" width="3" x="145" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-29" data-html="true"></rect>
+      <rect height="34" width="3" x="150" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-30" data-html="true"></rect>
+      <rect height="34" width="3" x="155" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-31" data-html="true"></rect>
+      <rect height="34" width="3" x="160" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-32" data-html="true"></rect>
+      <rect height="34" width="3" x="165" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-33" data-html="true"></rect>
+      <rect height="34" width="3" x="170" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-34" data-html="true"></rect>
+      <rect height="34" width="3" x="175" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-35" data-html="true"></rect>
+      <rect height="34" width="3" x="180" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-36" data-html="true"></rect>
+      <rect height="34" width="3" x="185" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-37" data-html="true"></rect>
+      <rect height="34" width="3" x="190" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-38" data-html="true"></rect>
+      <rect height="34" width="3" x="195" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-39" data-html="true"></rect>
+      <rect height="34" width="3" x="200" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-40" data-html="true"></rect>
+      <rect height="34" width="3" x="205" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-41" data-html="true"></rect>
+      <rect height="34" width="3" x="210" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-42" data-html="true"></rect>
+      <rect height="34" width="3" x="215" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-43" data-html="true"></rect>
+      <rect height="34" width="3" x="220" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-44" data-html="true"></rect>
+      <rect height="34" width="3" x="225" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-45" data-html="true"></rect>
+      <rect height="34" width="3" x="230" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-46" data-html="true"></rect>
+      <rect height="34" width="3" x="235" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-47" data-html="true"></rect>
+      <rect height="34" width="3" x="240" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-48" data-html="true"></rect>
+      <rect height="34" width="3" x="245" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-49" data-html="true"></rect>
+      <rect height="34" width="3" x="250" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-50" data-html="true"></rect>
+      <rect height="34" width="3" x="255" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-51" data-html="true"></rect>
+      <rect height="34" width="3" x="260" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-52" data-html="true"></rect>
+      <rect height="34" width="3" x="265" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-53" data-html="true"></rect>
+      <rect height="34" width="3" x="270" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-54" data-html="true"></rect>
+      <rect height="34" width="3" x="275" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-55" data-html="true"></rect>
+      <rect height="34" width="3" x="280" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-56" data-html="true"></rect>
+      <rect height="34" width="3" x="285" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-57" data-html="true"></rect>
+      <rect height="34" width="3" x="290" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-58" data-html="true"></rect>
+      <rect height="34" width="3" x="295" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-59" data-html="true"></rect>
+      <rect height="34" width="3" x="300" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-60" data-html="true"></rect>
+      <rect height="34" width="3" x="305" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-61" data-html="true"></rect>
+      <rect height="34" width="3" x="310" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-62" data-html="true"></rect>
+      <rect height="34" width="3" x="315" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-63" data-html="true"></rect>
+      <rect height="34" width="3" x="320" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-64" data-html="true"></rect>
+      <rect height="34" width="3" x="325" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-65" data-html="true"></rect>
+      <rect height="34" width="3" x="330" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-66" data-html="true"></rect>
+      <rect height="34" width="3" x="335" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-67" data-html="true"></rect>
+      <rect height="34" width="3" x="340" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-68" data-html="true"></rect>
+      <rect height="34" width="3" x="345" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-69" data-html="true"></rect>
+      <rect height="34" width="3" x="350" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-70" data-html="true"></rect>
+      <rect height="34" width="3" x="355" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-71" data-html="true"></rect>
+      <rect height="34" width="3" x="360" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-72" data-html="true"></rect>
+      <rect height="34" width="3" x="365" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-73" data-html="true"></rect>
+      <rect height="34" width="3" x="370" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-74" data-html="true"></rect>
+      <rect height="34" width="3" x="375" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-75" data-html="true"></rect>
+      <rect height="34" width="3" x="380" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-76" data-html="true"></rect>
+      <rect height="34" width="3" x="385" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-77" data-html="true"></rect>
+      <rect height="34" width="3" x="390" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-78" data-html="true"></rect>
+      <rect height="34" width="3" x="395" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-79" data-html="true"></rect>
+      <rect height="34" width="3" x="400" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-80" data-html="true"></rect>
+      <rect height="34" width="3" x="405" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-81" data-html="true"></rect>
+      <rect height="34" width="3" x="410" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-82" data-html="true"></rect>
+      <rect height="34" width="3" x="415" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-83" data-html="true"></rect>
+      <rect height="34" width="3" x="420" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-84" data-html="true"></rect>
+      <rect height="34" width="3" x="425" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-85" data-html="true"></rect>
+      <rect height="34" width="3" x="430" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-86" data-html="true"></rect>
+      <rect height="34" width="3" x="435" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-87" data-html="true"></rect>
+      <rect height="34" width="3" x="440" y="0" fill="#b3bac5" class="uptime-day component-h1hhzp134mdm day-88" data-html="true"></rect>
+      <rect height="34" width="3" x="445" y="0" fill="#2fcc66" class="uptime-day component-h1hhzp134mdm day-89" data-html="true"></rect>
+  </svg>
+    <div class="legend ">
+    <div class="legend-item light legend-item-date-range"><span class="availability-time-line-legend-day-count">60</span> days ago</div>
+    <div class="spacer"></div>
+    <div class="legend-item legend-item-uptime-value legend-item-h1hhzp134mdm"><span id="uptime-percent-h1hhzp134mdm">100</span> % uptime</div>
+    <div class="spacer"></div>
+    <div class="legend-item light legend-item-date-range">Today</div>
+  </div>
+  
+  </div>
+  
+  </div>
+  
+            </div>
+            <div class="component-container border-color">
+              
+  <div data-component-id="hfnflcgwqc3m" class="component-inner-container status-green showcased" data-component-status="operational" data-js-hook="">
+  
+     <span class="name">
+        Pumper System
+     </span>
+  
+  
+    <span class="component-status " title="">
+      Operational
+    </span>
+  
+    <span class="tool icon-indicator fa fa-check tooltipstered"></span>
+  
+      <div class="shared-partial uptime-90-days-wrapper">
+    <svg class="availability-time-line-graphic" id="uptime-component-hfnflcgwqc3m" preserveAspectRatio="none" height="34" viewBox="150 0 298 34">
+  
+      <rect height="34" width="3" x="0" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-0" data-html="true"></rect>
+      <rect height="34" width="3" x="5" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-1" data-html="true"></rect>
+      <rect height="34" width="3" x="10" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-2" data-html="true"></rect>
+      <rect height="34" width="3" x="15" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-3" data-html="true"></rect>
+      <rect height="34" width="3" x="20" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-4" data-html="true"></rect>
+      <rect height="34" width="3" x="25" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-5" data-html="true"></rect>
+      <rect height="34" width="3" x="30" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-6" data-html="true"></rect>
+      <rect height="34" width="3" x="35" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-7" data-html="true"></rect>
+      <rect height="34" width="3" x="40" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-8" data-html="true"></rect>
+      <rect height="34" width="3" x="45" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-9" data-html="true"></rect>
+      <rect height="34" width="3" x="50" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-10" data-html="true"></rect>
+      <rect height="34" width="3" x="55" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-11" data-html="true"></rect>
+      <rect height="34" width="3" x="60" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-12" data-html="true"></rect>
+      <rect height="34" width="3" x="65" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-13" data-html="true"></rect>
+      <rect height="34" width="3" x="70" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-14" data-html="true"></rect>
+      <rect height="34" width="3" x="75" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-15" data-html="true"></rect>
+      <rect height="34" width="3" x="80" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-16" data-html="true"></rect>
+      <rect height="34" width="3" x="85" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-17" data-html="true"></rect>
+      <rect height="34" width="3" x="90" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-18" data-html="true"></rect>
+      <rect height="34" width="3" x="95" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-19" data-html="true"></rect>
+      <rect height="34" width="3" x="100" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-20" data-html="true"></rect>
+      <rect height="34" width="3" x="105" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-21" data-html="true"></rect>
+      <rect height="34" width="3" x="110" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-22" data-html="true"></rect>
+      <rect height="34" width="3" x="115" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-23" data-html="true"></rect>
+      <rect height="34" width="3" x="120" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-24" data-html="true"></rect>
+      <rect height="34" width="3" x="125" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-25" data-html="true"></rect>
+      <rect height="34" width="3" x="130" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-26" data-html="true"></rect>
+      <rect height="34" width="3" x="135" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-27" data-html="true"></rect>
+      <rect height="34" width="3" x="140" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-28" data-html="true"></rect>
+      <rect height="34" width="3" x="145" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-29" data-html="true"></rect>
+      <rect height="34" width="3" x="150" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-30" data-html="true"></rect>
+      <rect height="34" width="3" x="155" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-31" data-html="true"></rect>
+      <rect height="34" width="3" x="160" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-32" data-html="true"></rect>
+      <rect height="34" width="3" x="165" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-33" data-html="true"></rect>
+      <rect height="34" width="3" x="170" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-34" data-html="true"></rect>
+      <rect height="34" width="3" x="175" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-35" data-html="true"></rect>
+      <rect height="34" width="3" x="180" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-36" data-html="true"></rect>
+      <rect height="34" width="3" x="185" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-37" data-html="true"></rect>
+      <rect height="34" width="3" x="190" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-38" data-html="true"></rect>
+      <rect height="34" width="3" x="195" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-39" data-html="true"></rect>
+      <rect height="34" width="3" x="200" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-40" data-html="true"></rect>
+      <rect height="34" width="3" x="205" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-41" data-html="true"></rect>
+      <rect height="34" width="3" x="210" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-42" data-html="true"></rect>
+      <rect height="34" width="3" x="215" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-43" data-html="true"></rect>
+      <rect height="34" width="3" x="220" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-44" data-html="true"></rect>
+      <rect height="34" width="3" x="225" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-45" data-html="true"></rect>
+      <rect height="34" width="3" x="230" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-46" data-html="true"></rect>
+      <rect height="34" width="3" x="235" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-47" data-html="true"></rect>
+      <rect height="34" width="3" x="240" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-48" data-html="true"></rect>
+      <rect height="34" width="3" x="245" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-49" data-html="true"></rect>
+      <rect height="34" width="3" x="250" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-50" data-html="true"></rect>
+      <rect height="34" width="3" x="255" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-51" data-html="true"></rect>
+      <rect height="34" width="3" x="260" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-52" data-html="true"></rect>
+      <rect height="34" width="3" x="265" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-53" data-html="true"></rect>
+      <rect height="34" width="3" x="270" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-54" data-html="true"></rect>
+      <rect height="34" width="3" x="275" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-55" data-html="true"></rect>
+      <rect height="34" width="3" x="280" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-56" data-html="true"></rect>
+      <rect height="34" width="3" x="285" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-57" data-html="true"></rect>
+      <rect height="34" width="3" x="290" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-58" data-html="true"></rect>
+      <rect height="34" width="3" x="295" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-59" data-html="true"></rect>
+      <rect height="34" width="3" x="300" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-60" data-html="true"></rect>
+      <rect height="34" width="3" x="305" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-61" data-html="true"></rect>
+      <rect height="34" width="3" x="310" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-62" data-html="true"></rect>
+      <rect height="34" width="3" x="315" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-63" data-html="true"></rect>
+      <rect height="34" width="3" x="320" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-64" data-html="true"></rect>
+      <rect height="34" width="3" x="325" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-65" data-html="true"></rect>
+      <rect height="34" width="3" x="330" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-66" data-html="true"></rect>
+      <rect height="34" width="3" x="335" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-67" data-html="true"></rect>
+      <rect height="34" width="3" x="340" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-68" data-html="true"></rect>
+      <rect height="34" width="3" x="345" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-69" data-html="true"></rect>
+      <rect height="34" width="3" x="350" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-70" data-html="true"></rect>
+      <rect height="34" width="3" x="355" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-71" data-html="true"></rect>
+      <rect height="34" width="3" x="360" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-72" data-html="true"></rect>
+      <rect height="34" width="3" x="365" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-73" data-html="true"></rect>
+      <rect height="34" width="3" x="370" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-74" data-html="true"></rect>
+      <rect height="34" width="3" x="375" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-75" data-html="true"></rect>
+      <rect height="34" width="3" x="380" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-76" data-html="true"></rect>
+      <rect height="34" width="3" x="385" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-77" data-html="true"></rect>
+      <rect height="34" width="3" x="390" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-78" data-html="true"></rect>
+      <rect height="34" width="3" x="395" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-79" data-html="true"></rect>
+      <rect height="34" width="3" x="400" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-80" data-html="true"></rect>
+      <rect height="34" width="3" x="405" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-81" data-html="true"></rect>
+      <rect height="34" width="3" x="410" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-82" data-html="true"></rect>
+      <rect height="34" width="3" x="415" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-83" data-html="true"></rect>
+      <rect height="34" width="3" x="420" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-84" data-html="true"></rect>
+      <rect height="34" width="3" x="425" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-85" data-html="true"></rect>
+      <rect height="34" width="3" x="430" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-86" data-html="true"></rect>
+      <rect height="34" width="3" x="435" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-87" data-html="true"></rect>
+      <rect height="34" width="3" x="440" y="0" fill="#b3bac5" class="uptime-day component-hfnflcgwqc3m day-88" data-html="true"></rect>
+      <rect height="34" width="3" x="445" y="0" fill="#2fcc66" class="uptime-day component-hfnflcgwqc3m day-89" data-html="true"></rect>
+  </svg>
+    <div class="legend ">
+    <div class="legend-item light legend-item-date-range"><span class="availability-time-line-legend-day-count">60</span> days ago</div>
+    <div class="spacer"></div>
+    <div class="legend-item legend-item-uptime-value legend-item-hfnflcgwqc3m"><span id="uptime-percent-hfnflcgwqc3m">100</span> % uptime</div>
+    <div class="spacer"></div>
+    <div class="legend-item light legend-item-date-range">Today</div>
+  </div>
+  
+  </div>
+  
+  </div>
+  
+            </div>
+      </div>
+      <div class="component-statuses-legend font-small">
+    <div class="legend-item status-green">
+      <span class="icon-indicator fa fa-check"></span>
+      Operational
+    </div>
+    <div class="legend-item status-yellow">
+      <span class="icon-indicator fa fa-minus-square"></span>
+      Degraded Performance
+    </div>
+    <div class="legend-item status-orange">
+      <span class="icon-indicator fa fa-exclamation-triangle"></span>
+      Partial Outage
+    </div>
+    <div class="breaker"></div>
+    <div class="legend-item status-red">
+      <span class="icon-indicator fa fa-times"></span>
+      Major Outage
+    </div>
+    <div class="legend-item status-blue">
+      <span class="icon-indicator fa fa-wrench"></span>
+      Maintenance
+    </div>
+  </div>
+  
+    </div>
+  
+  
+      <div id="uptime-tooltip" style="display: none;">
+    <div class="pointer-container" style="left: 64.5702px; top: 476.734px;">
+      <div class="pointer-larger"></div>
+      <div class="pointer-smaller"></div>
+    </div>
+    <div class="tooltip-box" style="left: 0px; top: 486.734px;">
+      <div class="tooltip-content">
+        <div class="tooltip-close hidden">
+          <i class="fa fa-times"></i>
+        </div>
+        <div class="date">24 Jan 2021</div>
+        <div class="outages">
+          <div class="outage-field major" style="display: none;">
+            <span class="label">
+              <i class="component-status page-colors text-color major_outage"></i>
+              Major outage
+            </span>
+            <span class="value-hrs"></span>
+            <span class="value-mins"></span>
+          </div>
+          <div class="outage-field partial" style="display: none;">
+            <span class="label">
+              <i class="component-status page-colors text-color partial_outage"></i>
+              Partial outage
+            </span>
+            <span class="value-hrs"></span>
+            <span class="value-mins"></span>
+          </div>
+          <div class="no-outages-msg" style="display: none;">
+            No downtime recorded on this day.
+          </div>
+          <div class="no-data-msg" style="display: block;">
+            No data exists for this day.
+          </div>
+          <div id="major-outage-group-count" class="outage-count" style="display: none;">
+            <i class="component-status page-colors text-color major_outage"></i>
+            <span class="count"></span>
+            had a major outage.
+          </div>
+          <div id="partial-outage-group-count" class="outage-count" style="display: none;">
+            <i class="component-status page-colors text-color partial_outage"></i>
+            <span class="count"></span>
+            had a partial outage.
+          </div>
+        </div>
+        <div class="related-events">
+          <h3 id="related-event-header" style="display: none;">Related</h3>
+          <ul id="related-events-list"></ul>
+        </div>
+        <div class="no-related-msg" style="display: none;">
+          <p>No incidents or maintenance related to this downtime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://dka575ofm4ao0.cloudfront.net/assets/vendor/bowser-1643ca34a6d589b2d4d42163a891e4512d5d7657125e09bb5f3d44288114e6bd.js"></script>
+  
+  
+  
+        <div class="incidents-list format-expanded">
+          <a class="font-largest no-link" id="past-incidents" href="#past-incidents">Past Incidents</a>
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">23</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported today.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular ">
+      <div class="date border-color font-large">Mar <var data-var="date">22</var>, <var data-var="year">2021</var></div>
+            <div class="incident-container">
+    <div class="incident-title impact-none font-large">
+      <a href="/incidents/xfw9brvqgbp5">This is an example incident</a>
+    </div>
+  
+    <div class="updates-container">
+      <!-- postmortem -->
+  
+      <!-- incident updates -->
+        <div class="update font-regular resolved">
+          <strong>Resolved</strong> -
+            Empathize with those affected and let them know everything is operating as normal.
+  
+          <br>
+  
+          <small>
+              Mar <var data-var="date">22</var>, <var data-var="time">01:26</var> UTC
+          </small>
+        </div>
+        <div class="update font-regular monitoring">
+          <strong>Monitoring</strong> -
+            Let your users know once a fix is in place, and keep communication clear and precise.
+  
+          <br>
+  
+          <small>
+              Mar <var data-var="date">22</var>, <var data-var="time">01:16</var> UTC
+          </small>
+        </div>
+        <div class="update font-regular identified">
+          <strong>Identified</strong> -
+            As you continue to work through the incident, update your customers frequently.
+  
+          <br>
+  
+          <small>
+              Mar <var data-var="date">22</var>, <var data-var="time">01:22</var> UTC
+          </small>
+        </div>
+        <div class="update font-regular investigating">
+          <strong>Investigating</strong> -
+            When your product or service isn’t functioning as expected, let your customers know by creating an incident. Communicate early, even if you don’t know exactly what’s going on.
+  
+          <br>
+  
+          <small>
+              Mar <var data-var="date">22</var>, <var data-var="time">01:52</var> UTC
+          </small>
+        </div>
+    </div>
+  
+  </div>
+  
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">21</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">20</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">19</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">18</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">17</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+            
+    <div class="status-day font-regular no-incidents">
+      <div class="date border-color font-large">Mar <var data-var="date">16</var>, <var data-var="year">2021</var></div>
+          <p class="color-secondary">No incidents reported.</p>
+    </div>
+  
+        </div>
+  
+  
+        <div class="page-footer border-color font-small">
+  
+          <span class="color-secondary powered-by" style="display: inline !important; visibility:visible !important; opacity: 1 !important; position:static !important; text-indent:0px !important; transform:scale(1) !important"><a class="color-secondary" target="_blank" rel="noopener noreferrer nofollow" href="https://mobilestar.us/">MobileStar.US</a></span>
+        </div>
+      </div>
+  
+      
+  
+    </div>
+  
+</body>
+</html>
+
+  
+    
+    
